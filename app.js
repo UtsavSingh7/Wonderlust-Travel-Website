@@ -82,6 +82,9 @@ app.get("/signup", (req, res) => {
     res.render("users/signup", { errors: [] });
 });
 
+
+
+
 app.post('/signup', async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
