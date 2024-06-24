@@ -1,0 +1,81 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row">
+  <div class="col-8 offset-2">
+    <br/>
+    <h3>Create a New Listing</h3>
+    <form method="POST" action="/listings" novalidate class="needs-validation" style="border: 1px solid #ccc; padding: 20px; border-radius: 10px;">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input name="listing[title]" placeholder="Enter title" type="text" class="form-control" required />
+        <div class="invalid-feedback">Please enter a title.</div>
+      </div>
+      <br />
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" placeholder="Enter description" class="form-control" required></textarea>
+        <div class="invalid-feedback">Please enter a description.</div>
+      </div>
+      <br />
+      <div class="mb-3">
+        <label for="image" class="form-label">Image link</label>
+        <input name="listing[image]" placeholder="Enter image URL/link" type="text" class="form-control" required />
+        <div class="invalid-feedback">Please enter a valid image URL/link.</div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input name="listing[price]" placeholder="Enter price" type="number" class="form-control" required min="0" />
+          <div class="invalid-feedback">Please enter a valid price.</div>
+        </div>
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Location</label>
+          <input name="listing[country]" placeholder="Enter country" type="text" class="form-control" required />
+          <div class="invalid-feedback">Please enter a country.</div>
+        </div>
+      </div>
+      <br />
+      <div class="mb-3">
+        <input name="listing[location]" placeholder="Enter location" type="text" class="form-control" required />
+        <div class="invalid-feedback">Please enter a location.</div>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary w-100">Add</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      var forms = document.getElementsByClassName('needs-validation');
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>
+
+<style>
+  .form-label {
+    font-weight: bold;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  .mb-3 {
+    margin-bottom: 1.5rem;
+  }
+</style>

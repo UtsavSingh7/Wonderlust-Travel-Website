@@ -1,0 +1,102 @@
+<% layout("/layouts/boilerplate") %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust Login</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+        animation: fadeIn 1s ease-in-out;
+        max-width: 500px;
+      }
+      h3 {
+        color: #343a40;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .form-label {
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+      .form-control {
+        border-radius: 4px;
+        transition: box-shadow 0.3s, border-color 0.3s;
+      }
+      .form-control:focus {
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        border-color: #007bff;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        transform: scale(1.05);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Login</h3>
+      <form method="POST" action="/login" novalidate class="needs-validation">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input name="username" type="text" class="form-control" required />
+          <div class="invalid-feedback">Please enter a username.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input name="password" type="password" class="form-control" required minlength="6" />
+          <div class="invalid-feedback">Please enter a password with at least 6 characters.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+    </div>
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
+</html>
